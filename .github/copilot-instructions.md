@@ -44,6 +44,21 @@
 - Debugging: use browser devtools (Elements, Console) for CSS/JS changes. After edits, refresh the page.
 - Linting/tests: none present. Do not add heavy toolchains without owner consent; prefer minimal, reversible changes.
 
+## Deploying
+
+- A GitHub Actions workflow is included at `.github/workflows/deploy.yml` to publish the site to the `gh-pages` branch on pushes to `main` using `peaceiris/actions-gh-pages`.
+- After merging to `main` the action will deploy the repository root (including `index.html`, `styles.css`, and `app.js`) to the `gh-pages` branch. A `.nojekyll` file is included to prevent Jekyll processing.
+- You can preview locally before pushing with:
+
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000/
+```
+
+Notes:
+- The action uses the built-in `GITHUB_TOKEN` so no additional secrets are required.
+- If you prefer deploying to Netlify or another host, keep the repo root as the publish directory and configure the host to use the repository root.
+
 ## Integration points & external dependencies
 
 - There are no external service integrations or dependency manifests in the repository. All behavior is local to the page.
