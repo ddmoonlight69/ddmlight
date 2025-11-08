@@ -59,6 +59,22 @@ Notes:
 - The action uses the built-in `GITHUB_TOKEN` so no additional secrets are required.
 - If you prefer deploying to Netlify or another host, keep the repo root as the publish directory and configure the host to use the repository root.
 
+## Custom domain / CNAME
+
+- This repo can be served from a custom domain using a `CNAME` file at the repo root. I added `CNAME` with the value `www.ddmlight.com`.
+- DNS steps you must perform at your DNS provider for `www.ddmlight.com` (recommended):
+   - Create a CNAME record for `www` pointing to `ddmoonlight69.github.io`.
+   - No A records required for the `www` subdomain.
+
+- If you want the apex domain (`ddmlight.com`) to redirect to `www.ddmlight.com`, add the following A records for the apex pointing to GitHub Pages IPs:
+   - 185.199.108.153
+   - 185.199.109.153
+   - 185.199.110.153
+   - 185.199.111.153
+
+- After DNS changes propagate (can take minutes to 48 hours), GitHub Pages will serve the site from your custom domain. You can verify in the repository Settings → Pages.
+
+
 ## Integration points & external dependencies
 
 - There are no external service integrations or dependency manifests in the repository. All behavior is local to the page.
